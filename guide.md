@@ -20,18 +20,9 @@ import 'dart:io';
 ```
 ## 2. User Login (HTTP POST)
 Create a simple login form that sends the user's credentials to an API endpoint.
-### Login Form:
+### Login Form POST Function:
 
 ```dart
-class LoginForm extends StatefulWidget {
-  @override
-  _LoginFormState createState() => _LoginFormState();
-}
-
-class _LoginFormState extends State<LoginForm> {
-  final _formKey = GlobalKey<FormState>();
-  String _username = '';
-  String _password = '';
 
   Future<void> login() async {
     final url = Uri.parse('https://example.com/api/login');
@@ -50,66 +41,12 @@ class _LoginFormState extends State<LoginForm> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: <Widget>[
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Username'),
-            onSaved: (value) {
-              _username = value!;
-            },
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your username';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Password'),
-            obscureText: true,
-            onSaved: (value) {
-              _password = value!;
-            },
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your password';
-              }
-              return null;
-            },
-          ),
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                login();
-              }
-            },
-            child: Text('Login'),
-          ),
-        ],
-      ),
-    );
-  }
-}
+  
 ```
 ## 3. Submitting a Leave Request (HTTP POST)
 Create a form for submitting leave requests.
 
 ```dart
-class LeaveRequestForm extends StatefulWidget {
-  @override
-  _LeaveRequestFormState createState() => _LeaveRequestFormState();
-}
-
-class _LeaveRequestFormState extends State<LeaveRequestForm> {
-  final _formKey = GlobalKey<FormState>();
-  String _reason = '';
-  DateTime _startDate = DateTime.now();
-  DateTime _endDate = DateTime.now();
 
   Future<void> submitLeaveRequest() async {
     final url = Uri.parse('https://example.com/api/leave-requests');
@@ -132,39 +69,7 @@ class _LeaveRequestFormState extends State<LeaveRequestForm> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: <Widget>[
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Reason for Leave'),
-            onSaved: (value) {
-              _reason = value!;
-            },
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter the reason for leave';
-              }
-              return null;
-            },
-          ),
-          // Date pickers for start and end dates (implementation not shown)
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                submitLeaveRequest();
-              }
-            },
-            child: Text('Submit Leave Request'),
-          ),
-        ],
-      ),
-    );
-  }
-}
+  
 ```
 ## 4. Updating a Leave Request (HTTP PUT)
 Create a form for updating existing leave requests.
@@ -172,20 +77,6 @@ Create a form for updating existing leave requests.
 ### Update Leave Request Form:
 
 ```dart
-class UpdateLeaveRequestForm extends StatefulWidget {
-  final int requestId;
-
-  UpdateLeaveRequestForm({required this.requestId});
-
-  @override
-  _UpdateLeaveRequestFormState createState() => _UpdateLeaveRequestFormState();
-}
-
-class _UpdateLeaveRequestFormState extends State<UpdateLeaveRequestForm> {
-  final _formKey = GlobalKey<FormState>();
-  String _reason = '';
-  DateTime _startDate = DateTime.now();
-  DateTime _endDate = DateTime.now();
 
   Future<void> updateLeaveRequest() async {
     final url = Uri.parse('https://example.com/api/leave-requests/${widget.requestId}');
@@ -208,39 +99,7 @@ class _UpdateLeaveRequestFormState extends State<UpdateLeaveRequestForm> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: <Widget>[
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Reason for Leave'),
-            onSaved: (value) {
-              _reason = value!;
-            },
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter the reason for leave';
-              }
-              return null;
-            },
-          ),
-          // Date pickers for start and end dates (implementation not shown)
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                updateLeaveRequest();
-              }
-            },
-            child: Text('Update Leave Request'),
-          ),
-        ],
-      ),
-    );
-  }
-}
+  
 ```
 
 ## 5. Deleting a Leave Request (HTTP DELETE)

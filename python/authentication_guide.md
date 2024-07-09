@@ -1,4 +1,4 @@
-# Part 1: Securing Data Transfer with Authorization Headers in app.py
+# Part 1: ADVANCED: Securing Data Transfer with Authorization Headers in app.py
 ## Explanation:
 To secure data transfer between your Flutter application and the server, you can use authorization headers to authenticate requests. This involves setting up the server (`app.py` in Flask) to require and validate these headers.
 
