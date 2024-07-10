@@ -32,14 +32,7 @@ String greeting(Strin name){
     }
 }
 
-<<<<<<< HEAD
-add http to pubspec.yaml
 
-password : info@titus.co.k3
-username: modcomflutter
-host : modcomflutter.mysql.pythonanywhere-services.com
-=======
-// Usage
 Text(greeting(profile['firstname']))
 ```
 
@@ -48,4 +41,3 @@ Text(greeting(profile['firstname']))
 Text(profile['email'].split('@')[0])
 ```
 add http to pubspec.yaml
->>>>>>> 83681f7c6f4f5caaf961158e8b03f068687f9e65
