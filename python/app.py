@@ -37,6 +37,15 @@ def index():
 
     return render_template('index.html', users=users, leave_apps=leave_apps)
 
+@app.route('/register', methods = ['POST'], )
+def post_user():
+    data = request.get_json()
+    firstname = data['firstname']
+    lastname = data['lastname']
+    email = data['email']
+    password = data['password']
+    return jsonify(register_user(firstname = firstname,lastname=lastname,email=email,password=password)) 
+
 @app.route('/users', methods=['GET'])
 def get_all_users_route():
     return get_all_users()
@@ -72,4 +81,4 @@ def delete_leave_app_route(app_id):
     return delete_leave_app(app_id)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='192.168.129.96')

@@ -25,3 +25,7 @@ show
 - username(from email)
 
 add http to pubspec.yaml
+
+password : info@titus.co.k3
+username: modcomflutter
+host : modcomflutter.mysql.pythonanywhere-services.com

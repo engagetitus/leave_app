@@ -13,6 +13,8 @@ def register_user(firstname, lastname, email, password):
             cursor.execute(sql, (firstname, lastname, email, password))
         conn.commit()
         return 'User registered successfully'
+    except ():
+        return 'User Not Saved'
     finally:
         conn.close()
 
